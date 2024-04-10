@@ -10,7 +10,7 @@
 #define RED_LED 2   // Define the pin for the red LED
 
 byte readCard[4];
-String My_ID = "(D0B77E89)";
+String My_ID = "(CHANGE THIS TO THE UID)";
 String ID = "";
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
