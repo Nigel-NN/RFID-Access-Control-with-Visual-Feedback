@@ -5,7 +5,7 @@ are programmed into the system.
 Components Required:
 Arduino board (e.g., Arduino Uno)
 MFRC522 RFID module
-OLED display (e.g., SSD1306)
+OLED display (I2C OLED)
 Breadboard and jumper wires
 RFID cards/tags
 Resistors (for LEDs)
@@ -17,6 +17,25 @@ Step 1: Setting Up the Circuit
 Connect the MFRC522 RFID module to your Arduino according to the circuit diagram.
 Connect the OLED display to your Arduino as shown in the diagram.
 Connect LEDs (green and red) to the designated pins on the Arduino.
+
+LEDs/Relay switch
+Green LED - pin 2
+Red LED - pin 7
+
+If you are using a relay makesure to use a diode on vcc and the pin you are using or the startup will be weird...
+
+I2C OLED 
+
+SDA - A5
+SCL - A4
+
+RFID TAG
+
+SDA - 10
+SCK - 13
+MOSI - 11
+MISO - 12
+RST - 9
 
 Step 2: Installing Libraries
 
@@ -37,7 +56,14 @@ If the ID matches, it displays "ACCESS GRANTED!" on the OLED display and turns o
 Otherwise, it displays "ACCESS DENIED!" and turns on the red LED.
 The function getID() reads the ID from the RFID card and converts it to a string.
 
-Step 5: Testing
+Step 5: Customize Your Project
+
+Replace (ADD UID HERE) with the UID of your authorized RFID card/tag.
+Customize the messages displayed on the OLED screen according to your preference.
+Modify the code to add more functionalities such as logging access attempts or triggering
+additional actions upon access.
+
+Step 6: Testing
 
 Upload the code to your Arduino board.
 Scan an authorized RFID card/tag.
@@ -45,11 +71,6 @@ Verify that the OLED display shows "ACCESS GRANTED!" and the green LED lights up
 Scan an unauthorized RFID card/tag.
 Verify that the OLED display shows "ACCESS DENIED!" and the red LED lights up.
 
-Step 6: Customize Your Project
 
-Replace (ADD UID HERE) with the UID of your authorized RFID card/tag.
-Customize the messages displayed on the OLED screen according to your preference.
-Modify the code to add more functionalities such as logging access attempts or triggering
-additional actions upon access.
 Congratulations! You have successfully created an Arduino RFID access control system with 
 an OLED display. Feel free to experiment further and enhance the functionality of your project.
